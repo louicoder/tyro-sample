@@ -1,0 +1,24 @@
+.LandingNav { 
+    background-color: #2e3131;
+    color: white;
+    justify-content:space-around;
+    padding: 10px;
+    text-align: center;
+}
+
+.LandingNavUl{
+    width: 70%;
+    justify-content: space-between
+}
+
+.LandingNav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 18px;
+}
+
+.LandingNav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+}
