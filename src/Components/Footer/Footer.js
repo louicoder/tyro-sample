@@ -4,7 +4,7 @@ import classes from './Footer.css'
 const Footer = () => {
 	return (
         <div className={classes.container}>
-        <div><h1>HERE WE ARE ..</h1></div>
+        <div className={{alignSelf: 'center'}}><h1>HERE WE ARE ..</h1></div>
         <div>
             <ul>
                 <li>Testing items</li>
@@ -13,7 +13,6 @@ const Footer = () => {
                 <li>Testing items</li>
                 <li>Testing items</li>
                 <li>Testing items</li>
-
             </ul>
         </div>
         <div>

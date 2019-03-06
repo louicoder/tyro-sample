@@ -1,0 +1,30 @@
+.container {
+	/* margin-top: 20px; */
+	justify-content: center;
+	border: 1px solid black;
+    display: flex;
+    margin: 50px auto;
+    /* align-self: center; */
+    width: 60%;
+}
+.nameInput {
+    width: 100%;
+    height: 30px;
+    align-self: center;
+    font-size: 1.2em;
+    border-radius: 10px;
+    /* border-bottom-width: 0px; */
+    border-width: 1px;
+    
+}
+
+.nameInputContainer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.fullProfile {
+    width:60%;
+    border: 1px solid black
+}
