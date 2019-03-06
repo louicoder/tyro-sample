@@ -4,39 +4,8 @@ import classes from './Footer.css'
 const Footer = () => {
 	return (
         <div className={classes.container}>
-        <div className={{alignSelf: 'center'}}><h1>HERE WE ARE ..</h1></div>
-        <div>
-            <ul>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-                <li>Testing items</li>
-
-            </ul>
-        </div>
+        <p>Copyright Tyro sample 2019</p>
+        
         </div>
     );
 };

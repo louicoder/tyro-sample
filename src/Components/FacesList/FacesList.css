@@ -1,0 +1,15 @@
+.container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.singleFace {
+    width: 200;
+    height: 200;
+}
+
+.faceInfo {
+    border: 1px solid black
+}

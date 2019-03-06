@@ -8,23 +8,28 @@
     width: 60%;
 }
 .nameInput {
-    width: 100%;
+    width: 50%;
     height: 30px;
     align-self: center;
     font-size: 1.2em;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     /* border-bottom-width: 0px; */
     border-width: 1px;
-    
+    outline: none;
 }
 
 .nameInputContainer {
-    width: 40%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     margin-top: 20px;
 }
 .fullProfile {
-    width:60%;
-    border: 1px solid black
+    width:40%;
+    border: 1px solid black;
+    /* width: auto */
+}
+
+.FacesList {
+    margin-top: 20px;
 }
