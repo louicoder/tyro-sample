@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './FacesList.css';
-import {withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class FacesList extends React.Component {
 
@@ -9,7 +10,7 @@ class FacesList extends React.Component {
     }
 
     selectedPerson = (person) => {
-        // this.props.history.push('/faces/'+person.login.uuid);
+        this.props.history.push('/faces/'+person.login.uuid);
     }
 
     render() {
@@ -33,6 +34,12 @@ class FacesList extends React.Component {
         </div>
         )
     }
-} 
+}
 
-export default withRouter(FacesList);
+const mapStateToProps = state => {
+    return {
+        faces: state.faces.faces
+    }
+}
+
+export default connect(mapStateToProps)(withRouter(FacesList));

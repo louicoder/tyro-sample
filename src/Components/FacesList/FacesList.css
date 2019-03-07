@@ -34,13 +34,19 @@
 }
 
 .image>img {
-    /* width: 20%; */
     border-radius: 50%;
 }
 
-@media(min-width: 1200px) {
+@media(max-width: 1400px) {
     .singleFace {
-        width: 45%;
+        width: 100%;
+    }
+    .container{
+        width: 70%;
+    }
+
+    .singleFace {
+        width: 100%
     }
 }
 

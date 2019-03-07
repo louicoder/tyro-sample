@@ -18,17 +18,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 error: action.error
             }
-        // case 'FILTER_FACES':
-        //     console.log(action.id)
-        //     const filteredFaces = [...state.faces]
-        //     const newFaces = filteredFaces.filter(face => {
-        //         return face.name.first.indexOf(action.name) !== -1;
-        //     })
-        //     console.log('reducer state' ,state.faces.length, 'reducer filtered', newFaces.length)
-        //     return {
-        //         ...state,
-        //         [filtered]: newFaces
-        //     }
 		default:
 			return state;
 	}

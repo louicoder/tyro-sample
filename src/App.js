@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import LandingPage from './Containers/LandingPage/LandingPage';
 import MainPage from './Containers/MainPage/MainPage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
