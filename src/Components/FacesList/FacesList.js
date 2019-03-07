@@ -9,7 +9,7 @@ class FacesList extends React.Component {
     }
 
     selectedPerson = (person) => {
-        this.props.history.replace('/faces/'+person.login.uuid);
+        // this.props.history.push('/faces/'+person.login.uuid);
     }
 
     render() {

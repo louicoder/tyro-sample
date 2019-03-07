@@ -1,38 +1,38 @@
 .container {
 	justify-content: center;
-	border: 1px solid black;
-    display: flex;
-    margin: 50px auto;
-    width: 60%;
+	/* border: 1px solid black; */
+	display: flex;
+	margin: 50px auto;
+	width: 60%;
 }
 .nameInput {
-    width: 50%;
-    height: 30px;
-    align-self: center;
-    font-size: 1.2em;
-    border-width: 1px;
-    outline: none;
-    text-align:center;
+	width: 70%;
+	height: 30px;
+	align-self: center;
+	font-size: 1.2em;
+	border-width: 1px;
+	outline: none;
+	text-align: center;
+}
+
+.profileImage {
+    
 }
 
 .nameInputContainer {
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+	width: 60%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
 }
 .fullProfile {
-    width:40%;
-    border: 1px solid black;
+	width: 40%;
+    /* border: 1px solid black; */
+    display: flex;
 }
 
 .FacesList {
-    margin-top: 20px;
+	margin-top: 20px;
 }
 
-@media(max-width: 700px) {
-    .container {
-        width: 80%;
-    }
 
-}

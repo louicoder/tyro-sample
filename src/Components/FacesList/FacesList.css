@@ -38,9 +38,14 @@
     border-radius: 50%;
 }
 
-@media(max-width: 1200px) {
+@media(min-width: 1200px) {
     .singleFace {
-        width: 100%;
-        margin-left:20px;
+        width: 45%;
     }
 }
+
+/* @media (max-width: 500px) {
+    .singleFace {
+        width: 100%
+    }
+} */
