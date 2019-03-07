@@ -11,4 +11,7 @@ A sample project for Tyro company. Project is built on react redux utilising mos
 Navigate to the route `localhost:3000/faces`
 
 #### search results
-> search through the list of results in real time by typing in the text box and seeing your search querries instantly
+_search through the list of results in real time by typing in the text box and seeing your search querries instantly_
+
+#### View single profile
+_View profile for a single person by click on the person in the list by the left side and view their profile on the right_
