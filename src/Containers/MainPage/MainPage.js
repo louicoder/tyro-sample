@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import classes from './MainPage.css';
-import FacesList from '../../Components/FacesList/FacesList'
+import FacesList from '../../Components/FacesList/FacesList';
+import { connect } from 'react-redux';
+import {getFaces} from '../../store/actions/facesActionsCreators'
 
 class MainPage extends Component {
 	state = {
@@ -14,7 +16,11 @@ class MainPage extends Component {
     };
 
     componentDidMount () {
-        
+        this.props.getFaces();
+    }
+
+    selectedPerson = (person) => {
+        console.log('here');
     }
 
 	render () {
@@ -29,7 +35,7 @@ class MainPage extends Component {
                         onChange={this.nameChangedHandler}
 					/>
 					<div className={classes.FacesList}>
-						<FacesList />
+						<FacesList data={this.props.faces} clicked={this.selectedPerson}/>
 					</div>
 				</div>
 				<div className={classes.fullProfile} />
@@ -38,4 +44,16 @@ class MainPage extends Component {
 	}
 }
 
-export default MainPage;
+const mapStateToProps = state => {
+    return {
+        faces: state.faces.faces
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getFaces: () => dispatch(getFaces())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

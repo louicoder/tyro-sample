@@ -1,5 +1,6 @@
 import React from 'react';
-import classes from './NavBar.css'
+import classes from './NavBar.css';
+import {Link} from 'react-router-dom'
 
 const NavBar = (props) => {
 	return (
@@ -7,16 +8,16 @@ const NavBar = (props) => {
 			<div className={classes.LandingNav}>
 				<ul>
 					<li>
-						<a href="#">Home</a>
+						<Link to="/faces">Home</Link>
 					</li>
 					<li>
-						<a href="#">About</a>
+						<Link to="/faces">About</Link>
 					</li>
 					<li>
-						<a href="#">Projects</a>
+						<Link to="/faces">Projects</Link>
 					</li>
 					<li>
-						<a href="#">Contact</a>
+						<Link to="/faces">Contact</Link>
 					</li>
 				</ul>
 			</div>

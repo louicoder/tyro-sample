@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import classes from './Login.css';
+import {Link} from 'react-router-dom'
 
 export class Login extends Component {
   render() {
@@ -12,8 +13,8 @@ export class Login extends Component {
             <input type="password" placeholder="Enter your password" required/>
             <input type="password" placeholder="Repeat your password" required/>
             <div style={{textAlign: 'center'}}>
-                <a href="#" style={{textDecoration: 'none'}}>Forgot Password ?</a><br /> <br />
-                Not yet registered, register <a href="#" style={{textDecoration: 'none'}}>Here..</a></div>
+                <Link to="/faces" style={{textDecoration: 'none'}}>Forgot Password ?</Link><br /> <br />
+                Not yet registered, register <Link to="/faces" style={{textDecoration: 'none'}}>Here..</Link></div>
             <button type="submit"><strong>Login</strong></button>
 
         </form>

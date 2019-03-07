@@ -2,14 +2,39 @@
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 10px;
+    padding: 10px;
+    /* margin: 10px 10px; */
 }
 
 .singleFace {
-    width: 200;
-    height: 200;
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid rgb(167, 134, 134); */
+    width: 100%;
+    margin-top: 0.3em;
+    padding: 16px 5px;
+    box-shadow:0 2px 6px 0px #e3cbcb;
+}
+
+.singleFace:hover {
+    box-shadow:0 2px 6px 0px #c2a7a7;
+
 }
 
 .faceInfo {
-    border: 1px solid black
+    /* border: 1px solid black; */
+    width: 100%;
+    font-size: 0.8em;
+    line-height: 0.3em;
+    cursor:pointer;
+    padding-left: 10px;
+}
+
+.faceInfo > p:not(n+2) {
+    text-transform: capitalize
+}
+
+.image>img {
+    /* width: 20%; */
+    border-radius: 50%;
 }

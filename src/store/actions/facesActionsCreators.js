@@ -4,10 +4,10 @@ import {GET_FACES_SUCESS, GET_FACES_FAILURE} from './actionTypes'
 export const getFaces = () => {
 	return (dispatch) => {
 		axios
-			.get('/')
+			.get('/?results=100')
 			.then((res) => {
-                console.log(res.data);
-                dispatch(getFacesSucess(res.data))
+                // console.log(res.data.results);
+                dispatch(getFacesSucess(res.data.results))
 			})
 			.catch((err) => {
                 console.error(err);
