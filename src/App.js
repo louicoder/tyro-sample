@@ -17,7 +17,7 @@ class App extends Component {
 						<Route path="/faces/:id" component={MainPage} />
 
 						<Route path="/faces" component={MainPage} />
-						<Route path="/" component={LandingPage} />
+						<Route path="/" component={MainPage} />
 
 					</Switch>
 				</BrowserRouter>

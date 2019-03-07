@@ -1,10 +1,8 @@
 .container {
-	/* margin-top: 20px; */
 	justify-content: center;
 	border: 1px solid black;
     display: flex;
     margin: 50px auto;
-    /* align-self: center; */
     width: 60%;
 }
 .nameInput {
@@ -12,10 +10,9 @@
     height: 30px;
     align-self: center;
     font-size: 1.2em;
-    /* border-radius: 10px; */
-    /* border-bottom-width: 0px; */
     border-width: 1px;
     outline: none;
+    text-align:center;
 }
 
 .nameInputContainer {
@@ -27,9 +24,15 @@
 .fullProfile {
     width:40%;
     border: 1px solid black;
-    /* width: auto */
 }
 
 .FacesList {
     margin-top: 20px;
+}
+
+@media(max-width: 700px) {
+    .container {
+        width: 80%;
+    }
+
 }

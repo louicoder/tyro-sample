@@ -24,7 +24,9 @@
     line-height: 0.3em;
     cursor:pointer;
     padding-left: 10px;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    padding-right: 10px;
+    flex-direction: column
 }
 
 .faceInfo > p:not(n+2) {
@@ -34,4 +36,11 @@
 .image>img {
     /* width: 20%; */
     border-radius: 50%;
+}
+
+@media(max-width: 1200px) {
+    .singleFace {
+        width: 100%;
+        margin-left:20px;
+    }
 }
