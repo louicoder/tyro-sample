@@ -50,6 +50,10 @@
 	outline:none;
 }
 
+.profileImage button:hover{
+	background-color: #336666;
+}
+
 .FacesList {
 	margin-top: 20px;
 }
