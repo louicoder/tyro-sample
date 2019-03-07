@@ -8,20 +8,21 @@ import NavBar from './Components/NavBar/NavBar';
 import Footer from './Components/Footer/Footer'
 
 class App extends Component {
-	render () {
+	render() {
 		return (
-      <>
-      <NavBar />
-			<BrowserRouter>
-				<Switch>
-					<Route path="/faces" component={MainPage} />
-					<Route path="/" component={LandingPage} />
+			<>
+				<NavBar />
+				<BrowserRouter>
+					<Switch>
+						<Route path="/faces/:id" component={MainPage} />
 
-					{/* <Route path="/" component={LandingPage}/> */}
-				</Switch>
-			</BrowserRouter>
-      <Footer />
-      </>
+						<Route path="/faces" component={MainPage} />
+						<Route path="/" component={LandingPage} />
+
+					</Switch>
+				</BrowserRouter>
+				<Footer />
+			</>
 		);
 	}
 }

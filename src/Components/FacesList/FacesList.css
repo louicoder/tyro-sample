@@ -1,16 +1,13 @@
 .container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
-    padding: 10px;
-    /* margin: 10px 10px; */
+	justify-content: space-evenly;
 }
 
 .singleFace {
     display: flex;
     flex-direction: row;
-    /* border: 1px solid rgb(167, 134, 134); */
-    width: 100%;
+    width: 45%;
     margin-top: 0.3em;
     padding: 16px 5px;
     box-shadow:0 2px 6px 0px #e3cbcb;
@@ -18,7 +15,6 @@
 
 .singleFace:hover {
     box-shadow:0 2px 6px 0px #c2a7a7;
-
 }
 
 .faceInfo {
@@ -28,6 +24,7 @@
     line-height: 0.3em;
     cursor:pointer;
     padding-left: 10px;
+    flex-wrap: wrap;
 }
 
 .faceInfo > p:not(n+2) {
