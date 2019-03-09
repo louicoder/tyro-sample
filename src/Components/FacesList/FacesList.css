@@ -1,16 +1,25 @@
 .container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-evenly;
+    /* justify-content: space-evenly; */
+    /* margin: 10px 10px 10px 0px; */
+    width: 100%;
+    /* padding: 10px 10px; */
 }
 
 .singleFace {
     display: flex;
     flex-direction: row;
     width: 45%;
-    margin-top: 0.3em;
     padding: 16px 5px;
     box-shadow:0 2px 6px 0px #e3cbcb;
+    box-sizing: border-box;
+    margin: 10px 20px 0px 0px;
+}
+
+.singleFace p:nth-child(2) span {
+    font-size: 1em;
+    color: green;
 }
 
 .singleFace:hover {
@@ -19,7 +28,7 @@
 
 .faceInfo {
     /* border: 1px solid black; */
-    width: 100%;
+    /* width: 100%; */
     font-size: 0.8em;
     line-height: 0.3em;
     cursor:pointer;
@@ -29,29 +38,16 @@
     flex-direction: column
 }
 
-.faceInfo > p:not(n+2) {
-    text-transform: capitalize
-}
-
 .image>img {
     border-radius: 50%;
 }
 
-@media(max-width: 1400px) {
+@media (max-width: 1366px) {
     .singleFace {
-        width: 100%;
+        width: 90%;
+        margin-left: 0px;
     }
     .container{
-        width: 70%;
-    }
-
-    .singleFace {
-        width: 100%
+        width: 100%;
     }
 }
-
-/* @media (max-width: 500px) {
-    .singleFace {
-        width: 100%
-    }
-} */

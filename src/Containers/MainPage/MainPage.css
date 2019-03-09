@@ -2,12 +2,13 @@
 	justify-content: center;
 	/* border: 1px solid black; */
 	display: flex;
+	flex-direction: "row";
 	margin: 50px auto;
-	width: 60%;
+	width: 70%;
 	align-items: flex-start;
 }
 .nameInput {
-	width: 70%;
+	width: 50%;
 	height: 30px;
 	align-self: center;
 	font-size: 1.2em;
@@ -18,15 +19,46 @@
 }
 
 .nameInputContainer {
-	width: 70%;
-	display: flex;
+	width: 100%;
+	/* display: flex; */
 	flex-direction: column;
 	margin-top: 20px;
 }
 
+.profileAlt {
+	border: 1px solid #4ecdc4;
+	padding: 20px 10px;
+	text-align: center;
+	font-weight: bold;
+	color: #607D8B;
+}
+
+.refresh {
+	border: none;
+	padding: 10px;
+	height: 100%;
+	background-color: #2e3131;
+	color: #ffffff;
+	border-radius: 10%;
+	box-sizing: border-box;
+	top: 0px;
+	cursor: pointer;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+.loading {
+	width: 100%;
+	font-weight: bold;
+	font-size: 2em;
+	/* text-align: center; */
+	color: #336666
+}
+
 .profileImage {
-	box-shadow: 0px 2px 20px 0px #d3c5c5;
-	width: 30%;
+	box-shadow: 0px 0px 9px 0px #0c0c0c59;
+	width: 40%;
+	box-sizing: border-box;
 	padding: 10px 10px;
 	margin-top: 75px;
 	line-height: 0.2em;
@@ -58,15 +90,18 @@
 	margin-top: 20px;
 }
 
-@media (max-width: 1399) {
+@media (max-width: 1366px) {
 	.container {
-		width: 50%;
+		width: 80%;
 	}
 	.profileImage{
 		width: 50%
 	}
 
 	.nameInputContainer {
-		width: 50%
+		width: 40%
+	}
+	.FacesList {
+		width: 100%
 	}
 }

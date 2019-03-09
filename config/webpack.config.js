@@ -1,5 +1,6 @@
-'use strict';
+// 'use strict';
 
+require('react-web-vector-icons/fonts');
 const fs = require('fs');
 const path = require('path');
 const webpack = require('webpack');
