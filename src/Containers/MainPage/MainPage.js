@@ -90,7 +90,7 @@ class MainPage extends Component {
 							<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
 							
 
-		let profile = <div className={classes.profileAlt}>Click on a profile to view</div>;
+		let profile = !this.state.id ? <div className={classes.profileAlt}>Click on a profile to view</div> : null;
 
 		if (this.state.id) {
 			profile = this.state.facesCopy.map((face) => {
