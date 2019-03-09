@@ -29,7 +29,7 @@ class MainPage extends Component {
      */
 	nameChangedHandler = (event) => {
 		const faces = this.props.faces.filter((face) => {
-			return face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1;
+			return (face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 || face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 || face.name.middle.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) ;
 		});
 		this.setState({
 			name: event.target.value,
