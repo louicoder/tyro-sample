@@ -51,3 +51,26 @@
         width: 100%;
     }
 }
+@media(max-width: 500px) {
+    .singleFace {
+        /* width: 100%; */
+        /* flex-direction: row; */
+    }
+    .container{
+        /* width: 100%; */
+        /* display: flex; */
+        width: 100%;
+        /* left: 0px; */
+        /* margin-left: 0px; */
+        /* border: 1px solid black; */
+        justify-content: center
+    }
+    .faceInfo {
+        /* margin-left: 20px; */
+        /* width: 100% */
+    }
+    .image img {
+        display: inline;
+    }
+
+}

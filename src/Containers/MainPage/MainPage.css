@@ -105,3 +105,25 @@
 		width: 100%
 	}
 }
+
+@media(max-width: 500px) {
+	.profileImage {
+		display: none;
+		width:0%;
+	}
+	.container{
+		width: 100%;
+		flex-direction: column;
+		/* padding: 5px; */
+	}
+	.nameInputContainer {
+		margin: 0px;
+		width: 100%;
+		/* align-items: center */
+	}
+	.nameInputContainer > input {
+		width: 70%;
+		margin-left: 10px;
+	}
+	
+}

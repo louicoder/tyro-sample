@@ -14,7 +14,6 @@ class App extends Component {
 				<BrowserRouter>
 					<Switch>
 						<Route path="/faces/:id" component={MainPage} />
-
 						<Route path="/faces" component={MainPage} />
 						<Route path="/" component={MainPage} />
 

@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class FacesList extends React.Component {
+	
 	selectedPerson = (person) => {
 		this.props.history.push('/faces/' + person.login.uuid);
 	};
