@@ -3,9 +3,9 @@ import classes from './MainPage.css';
 import FacesList from '../../Components/FacesList/FacesList';
 import { connect } from 'react-redux';
 import { getFaces } from '../../store/actions/facesActionsCreators';
+import Profile from '../../Components/Profile/Profile';
 
 class MainPage extends Component {
-
 	// WILL REPLACE COMPONENTWILLRECEIVEPROPS LIFECYCLE METHOD LATER.
 	// static getDerivedStateFromProps (props, state) {
 	// 	if (state.facesCopy !== props.faces) {
@@ -19,7 +19,15 @@ class MainPage extends Component {
 		name: '',
 		id: '',
 		facesCopy: [],
-		loading: false
+		loading: false,
+		profile: {
+			id: '',
+			name: '',
+			picture: '',
+			email: '',
+			state: '',
+			phone: ''
+		}
 	};
 
 	/**
@@ -29,7 +37,10 @@ class MainPage extends Component {
      */
 	nameChangedHandler = (event) => {
 		const faces = this.props.faces.filter((face) => {
-			return (face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 || face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) ;
+			return (
+				face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 ||
+				face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+			);
 		});
 		this.setState({
 			name: event.target.value,
@@ -38,26 +49,25 @@ class MainPage extends Component {
 	};
 
 	deleteProfileHandler = (id) => {
-		const newCopy = this.props.faces.filter(face => {
-			return face.login.uuid !== id
-		})
+		const newCopy = this.props.faces.filter((face) => {
+			return face.login.uuid !== id;
+		});
 		this.setState({
 			facesCopy: newCopy,
-			id: ""
-		})
-		this.props.history.push('/')
-	}
+			id: ''
+		});
+		this.props.history.push('/');
+	};
 
 	refreshHandler = () => {
-		this.setState({loading: true})
+		this.setState({ loading: true });
 
-		this.props.getFaces()
+		this.props.getFaces();
 
 		this.setState({
 			loading: false
-		})
-
-	}
+		});
+	};
 
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.faces !== this.props.faces) {
@@ -85,29 +95,20 @@ class MainPage extends Component {
 	}
 
 	render () {
-		const facesList = !this.props.faces.length > 0 ? 
-							<div className={classes.loading}>Loading profiles please wait...</div> : 
-							<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
-							
+		const facesList =
+			!this.props.faces.length > 0 ? (
+				<div className={classes.loading}>Loading profiles please wait...</div>
+			) : (
+				<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
+			);
 
 		let profile = !this.state.id ? <div className={classes.profileAlt}>Click on a profile to view</div> : null;
 
 		if (this.state.id) {
 			profile = this.state.facesCopy.map((face) => {
-				return face.login.uuid === this.state.id ?
-					(
-						<React.Fragment key={face.login.uuid}>
-							<img src={face.picture.large} alt="profile" />
-							<h2>{face.name.first + ' ' + face.name.last}</h2>
-							<hr />
-							<p>Email: {face.email}</p>
-							<p>State: {face.location.state}</p>
-							<p>Phone: {face.phone}</p>
-
-							<button onClick={() =>this.deleteProfileHandler(face.login.uuid)}>Remove Profile</button>
-						</React.Fragment>) : null;
-					
-				
+				return face.login.uuid === this.state.id ? (
+					<Profile id={this.state.id} deleteProfile={this.deleteProfileHandler(this.state.profile.id)} />
+				) : null;
 			});
 		}
 
@@ -121,14 +122,12 @@ class MainPage extends Component {
 						className={classes.nameInput}
 						onChange={this.nameChangedHandler}
 					/>
-					<button onClick={this.refreshHandler} className={classes.refresh}>Refresh</button>
-					<div className={classes.FacesList}>
-						{facesList}
-					</div>
+					<button onClick={this.refreshHandler} className={classes.refresh}>
+						Refresh
+					</button>
+					<div className={classes.FacesList}>{facesList}</div>
 				</div>
-				<div className={classes.profileImage}>
-				{profile}
-				</div>
+				<div className={classes.profileImage}>{profile}</div>
 			</div>
 		);
 	}
