@@ -3,8 +3,9 @@ import classes from './FacesList.css';
 import { withRouter } from 'react-router-dom';
 // import { connect } from 'react-redux';
 
+
 const FacesList = (props) => {
-	
+
 	const selectedPerson = (profileId) => {
 		props.history.push('/faces/' + profileId);
 	};
