@@ -96,7 +96,7 @@ class MainPage extends Component {
 			profile = this.state.facesCopy.map((face) => {
 				return face.login.uuid === this.state.id ?
 					(
-						<>
+						<React.Fragment key={face.login.uuid}>
 							<img src={face.picture.large} alt="profile" />
 							<h2>{face.name.first + ' ' + face.name.last}</h2>
 							<hr />
@@ -105,7 +105,7 @@ class MainPage extends Component {
 							<p>Phone: {face.phone}</p>
 
 							<button onClick={() =>this.deleteProfileHandler(face.login.uuid)}>Remove Profile</button>
-						</>) : null;
+						</React.Fragment>) : null;
 					
 				
 			});
