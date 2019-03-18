@@ -16,8 +16,14 @@ class MainPage extends Component {
 	// }
 
 	state = {
+		searchTerm: '',
 		name: '',
-		id: '',
+		userId: '',
+		uuid: '',
+		picture: '',
+		email: '',
+		state: '',
+		phone: '',
 		facesCopy: [],
 		loading: false
 	};
@@ -32,11 +38,12 @@ class MainPage extends Component {
 			return (face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 || face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) ;
 		});
 		this.setState({
-			name: event.target.value,
+			searchTerm: event.target.value,
 			facesCopy: faces
 		});
 	};
 
+<<<<<<< HEAD
 	deleteProfileHandler = (id) => {
 		const newCopy = this.props.faces.filter(face => {
 			return face.login.uuid !== id
@@ -47,7 +54,28 @@ class MainPage extends Component {
 		})
 		this.props.history.push('/')
 	}
+=======
+	/**
+	 * function setes new state and navigates to new URL
+	 * @param {id} String
+	 * @returns {void}
+	 */
+	deleteProfileHandler = () => {
+		const newCopy = this.props.faces.filter((face) => {
+			return face.login.uuid !== this.state.userId;
+		});
+		this.setState({
+			facesCopy: newCopy,
+			userId: ''
+		});
+		this.props.history.push('/');
+	};
+>>>>>>> b98ddc0... add and edit profile component, add react hook useEffect
 
+	/**
+	 * function handles getFaces side Effect. Fetching new faces is done here.
+	 * @returns {void}
+	 */
 	refreshHandler = () => {
 		this.setState({loading: true})
 
@@ -59,20 +87,29 @@ class MainPage extends Component {
 
 	}
 
+	/**
+	 * function sets new profile data for s single person clicked.
+	 * @param {Object} profileData
+	 * @returns {void}
+	 */
+	selectedPerson = (profileData) => {
+		// console.log('selected person function', profileData);
+
+		this.setState({
+			userId: profileData.login.uuid,
+			name: profileData.name.first + ' ' + profileData.name.last,
+			picture: profileData.picture.large,
+			state: profileData.location.state,
+			phone: profileData.phone,
+			email: profileData.email
+		});
+	};
+
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.faces !== this.props.faces) {
 			this.setState({ facesCopy: nextProps.faces, id: this.props.match.params.id });
 		}
 	}
-
-	// shouldComponentUpdate(nextProps,nextState) {
-	// 	let update = false;
-	// 	// let shouldUpdate = this.state.facesCopy !== nextState.facesCopy;
-	// 	if (this.state.facesCopy !== nextProps.faces) {
-	// 		update = true;
-	// 	}
-	// 	return update;
-	//   }
 
 	componentDidUpdate (oldProps, oldState) {
 		if (oldState.id !== this.props.match.params.id) {
@@ -85,38 +122,20 @@ class MainPage extends Component {
 	}
 
 	render () {
-		const facesList = !this.props.faces.length > 0 ? 
-							<div className={classes.loading}>Loading profiles please wait...</div> : 
-							<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
-							
-
-		let profile = !this.state.id ? <div className={classes.profileAlt}>Click on a profile to view</div> : null;
-
-		if (this.state.id) {
-			profile = this.state.facesCopy.map((face) => {
-				return face.login.uuid === this.state.id ?
-					(
-						<>
-							<img src={face.picture.large} alt="profile" />
-							<h2>{face.name.first + ' ' + face.name.last}</h2>
-							<hr />
-							<p>Email: {face.email}</p>
-							<p>State: {face.location.state}</p>
-							<p>Phone: {face.phone}</p>
-
-							<button onClick={() =>this.deleteProfileHandler(face.login.uuid)}>Remove Profile</button>
-						</>) : null;
-					
-				
-			});
-		}
+		// console.log('state changes', this.state);
+		const facesList =
+			!this.props.faces.length > 0 ? (
+				<div className={classes.loading}>Loading profiles please wait...</div>
+			) : (
+				<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
+			);
 
 		return (
 			<div className={classes.container}>
 				<div className={classes.nameInputContainer}>
 					<input
 						type="text"
-						value={this.state.name}
+						value={this.state.searchTerm}
 						placeholder="search through available profile"
 						className={classes.nameInput}
 						onChange={this.nameChangedHandler}
@@ -129,6 +148,15 @@ class MainPage extends Component {
 				<div className={classes.profileImage}>
 				{profile}
 				</div>
+<<<<<<< HEAD
+=======
+				<div className={classes.profileImage}>
+					<Profile 
+					id={this.state.userId}
+					deleteProfile={this.deleteProfileHandler}
+					/>
+				</div>
+>>>>>>> b98ddc0... add and edit profile component, add react hook useEffect
 			</div>
 		);
 	}
