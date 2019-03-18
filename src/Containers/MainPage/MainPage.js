@@ -16,18 +16,16 @@ class MainPage extends Component {
 	// }
 
 	state = {
+		searchTerm: '',
 		name: '',
-		id: '',
+		userId: '',
+		uuid: '',
+		picture: '',
+		email: '',
+		state: '',
+		phone: '',
 		facesCopy: [],
-		loading: false,
-		profile: {
-			id: '',
-			name: '',
-			picture: '',
-			email: '',
-			state: '',
-			phone: ''
-		}
+		loading: false
 	};
 
 	/**
@@ -43,22 +41,31 @@ class MainPage extends Component {
 			);
 		});
 		this.setState({
-			name: event.target.value,
+			searchTerm: event.target.value,
 			facesCopy: faces
 		});
 	};
 
-	deleteProfileHandler = (id) => {
+	/**
+	 * function setes new state and navigates to new URL
+	 * @param {id} String
+	 * @returns {void}
+	 */
+	deleteProfileHandler = () => {
 		const newCopy = this.props.faces.filter((face) => {
-			return face.login.uuid !== id;
+			return face.login.uuid !== this.state.userId;
 		});
 		this.setState({
 			facesCopy: newCopy,
-			id: ''
+			userId: ''
 		});
 		this.props.history.push('/');
 	};
 
+	/**
+	 * function handles getFaces side Effect. Fetching new faces is done here.
+	 * @returns {void}
+	 */
 	refreshHandler = () => {
 		this.setState({ loading: true });
 
@@ -69,20 +76,29 @@ class MainPage extends Component {
 		});
 	};
 
+	/**
+	 * function sets new profile data for s single person clicked.
+	 * @param {Object} profileData
+	 * @returns {void}
+	 */
+	selectedPerson = (profileData) => {
+		// console.log('selected person function', profileData);
+
+		this.setState({
+			userId: profileData.login.uuid,
+			name: profileData.name.first + ' ' + profileData.name.last,
+			picture: profileData.picture.large,
+			state: profileData.location.state,
+			phone: profileData.phone,
+			email: profileData.email
+		});
+	};
+
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.faces !== this.props.faces) {
 			this.setState({ facesCopy: nextProps.faces, id: this.props.match.params.id });
 		}
 	}
-
-	// shouldComponentUpdate(nextProps,nextState) {
-	// 	let update = false;
-	// 	// let shouldUpdate = this.state.facesCopy !== nextState.facesCopy;
-	// 	if (this.state.facesCopy !== nextProps.faces) {
-	// 		update = true;
-	// 	}
-	// 	return update;
-	//   }
 
 	componentDidUpdate (oldProps, oldState) {
 		if (oldState.id !== this.props.match.params.id) {
@@ -95,6 +111,7 @@ class MainPage extends Component {
 	}
 
 	render () {
+		// console.log('state changes', this.state);
 		const facesList =
 			!this.props.faces.length > 0 ? (
 				<div className={classes.loading}>Loading profiles please wait...</div>
@@ -102,22 +119,12 @@ class MainPage extends Component {
 				<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
 			);
 
-		let profile = !this.state.id ? <div className={classes.profileAlt}>Click on a profile to view</div> : null;
-
-		if (this.state.id) {
-			profile = this.state.facesCopy.map((face) => {
-				return face.login.uuid === this.state.id ? (
-					<Profile id={this.state.id} deleteProfile={this.deleteProfileHandler(this.state.profile.id)} />
-				) : null;
-			});
-		}
-
 		return (
 			<div className={classes.container}>
 				<div className={classes.nameInputContainer}>
 					<input
 						type="text"
-						value={this.state.name}
+						value={this.state.searchTerm}
 						placeholder="search through available profile"
 						className={classes.nameInput}
 						onChange={this.nameChangedHandler}
@@ -127,7 +134,12 @@ class MainPage extends Component {
 					</button>
 					<div className={classes.FacesList}>{facesList}</div>
 				</div>
-				<div className={classes.profileImage}>{profile}</div>
+				<div className={classes.profileImage}>
+					<Profile 
+					id={this.state.userId}
+					deleteProfile={this.deleteProfileHandler}
+					/>
+				</div>
 			</div>
 		);
 	}
