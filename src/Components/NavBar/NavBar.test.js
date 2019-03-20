@@ -6,21 +6,20 @@ import NavBar from './NavBar'
 
 configure({adapter: new Adapter()});
 
+let wrapper;
+
+beforeEach(() => {
+    wrapper = shallow(<NavBar />)
+})
+
 describe('<NavBar />', () => {
 
     it('should render correctly', () => {
-        const wrapper = shallow(<NavBar />);
-        // const text = wrapper.find('ul').text
-        console.log('text');
+        
         expect(wrapper.exists()).toBe(true)
-        // console.log(wrapper.instance);
     })
 
-    it('should render 4 list items', () => {
-        const wrapper = shallow(<NavBar />);
-        // const text = wrapper.find('ul').text
-        console.log('text');
+    it('should render 4 nav list items', () => {
         expect(wrapper.find('li').length).toBe(4)
-        // console.log(wrapper.instance);
     })
 })

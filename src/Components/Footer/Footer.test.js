@@ -20,7 +20,7 @@ describe('<Footer />', () => {
         expect(wrapper.find('div').length).toBe(1)
     })
 
-    it('should render 4 list items', () => {
+    it('should render 1 paragraph', () => {
         expect(wrapper.find('p').length).toBe(1)
     })
 })
