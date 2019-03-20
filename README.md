@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/louiCoder/tyro-sample/tree/master.svg?style=svg)](https://circleci.com/gh/louiCoder/tyro-sample/tree/master)
+
 # Tyro-sample-app
 A sample project for Tyro company. Project is built on react redux utilising most of the rich features of both stacks. The app makes use of an online random face generator api to query faces of different people (The api is free to use) it can be found here [https://randomuser.me/](https://randomuser.me/). For more information on how to start and run the app follow instructions below
 
