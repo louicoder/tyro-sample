@@ -9,18 +9,17 @@ import Footer from './Components/Footer/Footer'
 class App extends Component {
 	render() {
 		return (
-			<>
-				<NavBar />
+			
 				<BrowserRouter>
-					<Switch>
-						<Route path="/faces/:id" component={MainPage} />
-						<Route path="/faces" component={MainPage} />
-						<Route path="/" component={MainPage} />
-
+					<NavBar />
+						<Switch>
+							<Route path="/faces/:id" component={MainPage} />
+							<Route path="/faces" component={MainPage} />
+							<Route path="/" component={MainPage} />
 					</Switch>
+					<Footer />
 				</BrowserRouter>
-				<Footer />
-			</>
+			
 		);
 	}
 }

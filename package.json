@@ -17,6 +17,8 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "5.12.0",
     "eslint-config-react-app": "^3.0.7",
     "eslint-loader": "2.1.1",
@@ -46,6 +48,7 @@
     "react-dom": "^16.8.2",
     "react-redux": "^6.0.1",
     "react-router-dom": "^4.3.1",
+    "react-test-render": "^1.1.1",
     "react-web-vector-icons": "^1.0.2",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
@@ -62,7 +65,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js --verbose",
+    "test:coverage": "jest --verbose --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -114,13 +118,16 @@
       "node"
     ],
     "watchPlugins": [
-      "/home/louicoder/Desktop/mtn-challenge/node_modules/jest-watch-typeahead/filename.js",
-      "/home/louicoder/Desktop/mtn-challenge/node_modules/jest-watch-typeahead/testname.js"
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
     ]
   },
   "babel": {
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "jest-watch-typeahead": "^0.2.1"
   }
 }
