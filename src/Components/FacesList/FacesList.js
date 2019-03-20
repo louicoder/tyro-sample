@@ -48,11 +48,11 @@ const FacesList = (props) => {
 						<p>State: {person.location.state}</p>
 						<p>Phone: {person.phone}</p>
 					</div>
-				))}
-			</div>
-		);
-	}
-}
+				</div>
+			))}
+		</div>
+	);
+};
 
 const mapStateToProps = (state) => {
 	return {

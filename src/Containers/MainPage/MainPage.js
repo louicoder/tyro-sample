@@ -3,9 +3,9 @@ import classes from './MainPage.css';
 import FacesList from '../../Components/FacesList/FacesList';
 import { connect } from 'react-redux';
 import { getFaces } from '../../store/actions/facesActionsCreators';
+import Profile from '../../Components/Profile/Profile';
 
 class MainPage extends Component {
-
 	// WILL REPLACE COMPONENTWILLRECEIVEPROPS LIFECYCLE METHOD LATER.
 	// static getDerivedStateFromProps (props, state) {
 	// 	if (state.facesCopy !== props.faces) {
@@ -35,7 +35,10 @@ class MainPage extends Component {
      */
 	nameChangedHandler = (event) => {
 		const faces = this.props.faces.filter((face) => {
-			return (face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 || face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1) ;
+			return (
+				face.name.first.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1 ||
+				face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+			);
 		});
 		this.setState({
 			searchTerm: event.target.value,
@@ -43,18 +46,6 @@ class MainPage extends Component {
 		});
 	};
 
-<<<<<<< HEAD
-	deleteProfileHandler = (id) => {
-		const newCopy = this.props.faces.filter(face => {
-			return face.login.uuid !== id
-		})
-		this.setState({
-			facesCopy: newCopy,
-			id: ""
-		})
-		this.props.history.push('/')
-	}
-=======
 	/**
 	 * function setes new state and navigates to new URL
 	 * @param {id} String
@@ -70,22 +61,20 @@ class MainPage extends Component {
 		});
 		this.props.history.push('/');
 	};
->>>>>>> b98ddc0... add and edit profile component, add react hook useEffect
 
 	/**
 	 * function handles getFaces side Effect. Fetching new faces is done here.
 	 * @returns {void}
 	 */
 	refreshHandler = () => {
-		this.setState({loading: true})
+		this.setState({ loading: true });
 
-		this.props.getFaces()
+		this.props.getFaces();
 
 		this.setState({
 			loading: false
-		})
-
-	}
+		});
+	};
 
 	/**
 	 * function sets new profile data for s single person clicked.
@@ -140,20 +129,15 @@ class MainPage extends Component {
 						className={classes.nameInput}
 						onChange={this.nameChangedHandler}
 					/>
-					<button onClick={this.refreshHandler} className={classes.refresh}>Refresh</button>
-					<div className={classes.FacesList}>
-						{facesList}
-					</div>
+					<button onClick={this.refreshHandler} className={classes.refresh}>
+						Refresh
+					</button>
+					<div className={classes.FacesList}>{facesList}</div>
 				</div>
-				<div className={classes.profileImage}>
-				{profile}
-				</div>
-<<<<<<< HEAD
-=======
+
 				<div className={classes.profileImage}>
 					<Profile id={this.state.userId} deleteProfile={this.deleteProfileHandler} />
 				</div>
->>>>>>> b98ddc0... add and edit profile component, add react hook useEffect
 			</div>
 		);
 	}
