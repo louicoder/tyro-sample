@@ -5,43 +5,8 @@
 version: 2
 jobs:
   build:
-    # environment:
-    #   CC_TEST_REPORTER_ID: de1d7df90835a4688e72044ffda2c71f770245c7f30fd8273ea929cf9fc2e4f9
-    # steps:
-    # - attach_workspace:
-    #     at: ~/repo/tmp
-    # - run:
-    #     name: Upload coverage results to Code Climate
-    #     command: |
-    #       ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 2 -o tmp/codeclimate.total.json
-    #       ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
-    frontend-tests:
-    steps:
-      - checkout 
-      - attach_workspace:
-          at: ~/repo/tmp
-      - run: npm install
-      - run: 
-          name: Run frontend testss
-          command: |
-            npm test
-            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.frontend.json coverage/frontend/lcov.info
-      - persist_to_workspace:
-          root: tmp
-          paths: 
-            - codeclimate.frontend.json
-  upload-coverage:
-    
-    environment: 
-      - CC_TEST_REPORTER_ID: de1d7df90835a4688e72044ffda2c71f770245c7f30fd8273ea929cf9fc2e4f9
-    steps:
-      - attach_workspace:
-          at: ~/repo/tmp
-      - run:
-          name: Upload coverage results to Code Climate
-          command: |
-            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 2 -o tmp/codeclimate.total.json
-            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.js
+    environment:
+      CC_TEST_REPORTER_ID: de1d7df90835a4688e72044ffda2c71f770245c7f30fd8273ea929cf9fc2e4f9
     docker:
       # specify the version you desire here
       - image: circleci/node:8
@@ -72,3 +37,12 @@ jobs:
 
       # run tests!
       - run: npm run test:coverage
+      - run:
+          name: Generate code coverage
+          command: './node_modules/.bin/nyc report --reporter=text-lcov'
+      - store_artifacts:
+          path: test-results.xml
+          prefix: tests
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
