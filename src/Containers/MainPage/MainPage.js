@@ -122,13 +122,13 @@ class MainPage extends Component {
 	}
 
 	render () {
-		// console.log('state changes', this.state);
-		const facesList =
-			!this.props.faces.length > 0 ? (
-				<div className={classes.loading}>Loading profiles please wait...</div>
-			) : (
-				<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
-			);
+		// --- TODO ---
+		// loading state to be improved
+		const facesList = this.state.loading ? (
+			<div className={classes.loading}>Loading profiles please wait...</div>
+		) : (
+			<FacesList data={this.state.facesCopy} clicked={this.selectedPerson} />
+		);
 
 		return (
 			<div className={classes.container}>
@@ -151,10 +151,7 @@ class MainPage extends Component {
 <<<<<<< HEAD
 =======
 				<div className={classes.profileImage}>
-					<Profile 
-					id={this.state.userId}
-					deleteProfile={this.deleteProfileHandler}
-					/>
+					<Profile id={this.state.userId} deleteProfile={this.deleteProfileHandler} />
 				</div>
 >>>>>>> b98ddc0... add and edit profile component, add react hook useEffect
 			</div>
