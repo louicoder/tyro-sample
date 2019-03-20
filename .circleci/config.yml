@@ -16,7 +16,6 @@ jobs:
     #       ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 2 -o tmp/codeclimate.total.json
     #       ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
     frontend-tests:
-    <<: *defaults
     steps:
       - checkout 
       - attach_workspace:
