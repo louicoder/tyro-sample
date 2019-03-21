@@ -41,14 +41,8 @@ jobs:
           name: Generate code coverage
           command: './coverage/coverage-final.json report --reporter=text-lcov'
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      - run: chmod +x ./cc-test-reporter
+      - run: chmod 777 ./cc-test-reporter
       - run: sudo mkdir -p $CIRCLE_TEST_REPORTS/phpunit
       - run: ./cc-test-reporter before-build
       - run: sudo vendor/bin/phpunit --coverage-clover clover.xml
       - run: ./cc-test-reporter after-build -t clover --exit-code $?
-      # - store_artifacts:
-      #     path: test-results.xml
-      #     prefix: tests
-      # - store_artifacts:
-      #     path: coverage
-      #     prefix: coverage
