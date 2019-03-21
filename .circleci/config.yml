@@ -10,27 +10,29 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/repo/tmp
+          at: ~/repo
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm install
+      - save_cache:
+          paths: |
+            - ./node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+     
       - run:
           name: Install Code Climate Test Reporter
           command: |
-            mkdir -p tmp/
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
-            chmod +x ./tmp/cc-test-reporter
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
       - run:
           name: "Run Jest and Collect Coverage Reports"
           command: |
+            ./cc-test-reporter before-build
             npm run test:coverage 
+            ./cc-test-reporter after-build --coverage-input-type clover --exit-code $?
             # ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.json -p 2 -o tmp/codeclimate.json
             # ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.json coverage/.resultset.json
       - store_artifacts:
