@@ -37,9 +37,9 @@ jobs:
 
       # run tests!
       - run: npm run test:coverage
-      - run:
-          name: Generate code coverage
-          command: './coverage/coverage-final.json report --reporter=text-lcov'
+      # - run:
+      #     name: Generate code coverage
+      #     command: './coverage/coverage-final.json report --reporter=text-lcov'
       - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - run: chmod 777 ./cc-test-reporter
       - run: sudo mkdir -p $CIRCLE_TEST_REPORTS/phpunit
