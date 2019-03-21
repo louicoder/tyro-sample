@@ -29,20 +29,31 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
+      - attach_workspace:
+          at: ~/repo/tmp
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
-      - run: npm run test:coverage
-      # - run:
-      #     name: Generate code coverage
-      #     command: './coverage/coverage-final.json report --reporter=text-lcov'
-      - run: curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-      - run: chmod 777 ./cc-test-reporter
-      - run: sudo mkdir -p $CIRCLE_TEST_REPORTS/phpunit
-      - run: ./cc-test-reporter before-build
-      - run: sudo vendor/bin/phpunit --coverage-clover clover.xml
-      - run: ./cc-test-reporter after-build -t clover --exit-code $?
+      - run: npm install
+      - run: 
+          name: Run frontend testss
+          command: |
+            npm test
+            ./tmp/cc-test-reporter format-coverage -t lcov -o tmp/codeclimate.json coverage/lcov.info
+      - persist_to_workspace:
+          root: tmp
+          paths: 
+            - codeclimate.json
+  upload-coverage:
+      environment: 
+        - CC_TEST_REPORTER_ID: de1d7df90835a4688e72044ffda2c71f770245c7f30fd8273ea929cf9fc2e4f9
+      steps:
+        - attach_workspace:
+            at: ~/repo/tmp
+        - run:
+            name: Upload coverage results to Code Climate
+            command: |
+              ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.json -p 2 -o tmp/codeclimate.total.json
