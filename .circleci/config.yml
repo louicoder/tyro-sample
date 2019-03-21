@@ -40,10 +40,10 @@ jobs:
       - run: 
           name: "Upload coverage tp code climate"
           command: |
-            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.json
+            ./tmp/cc-test-reporter upload-coverage -i coverage/coverage-final.json
             
 
-      - store_artifacts:
-          path: coverage
-      - deploy:
-          command: ./cc
+      # - store_artifacts:
+      #     path: coverage
+      # - deploy:
+      #     command: ./cc
