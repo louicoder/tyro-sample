@@ -31,6 +31,7 @@ jobs:
           name: "Run Jest and Collect Coverage Reports"
           command: |
             npm run test:coverage 
+            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.json -p 2 -o tmp/codeclimate.json
             ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.json coverage/.resultset.json
       - persist_to_workspace:
           root: tmp
