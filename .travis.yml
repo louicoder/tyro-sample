@@ -7,3 +7,9 @@ cache:
 script:
   - npm run test:coverage
   # - npm run build
+
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script: npm install jest && jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
