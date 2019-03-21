@@ -1,5 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/louiCoder/tyro-sample/badge.svg?branch=master)](https://coveralls.io/github/louiCoder/tyro-sample?branch=master)
 [![CircleCI](https://circleci.com/gh/louiCoder/tyro-sample/tree/master.svg?style=svg)](https://circleci.com/gh/louiCoder/tyro-sample/tree/master)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c4249ef087a010626205/test_coverage)](https://codeclimate.com/github/louiCoder/tyro-sample/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/c4249ef087a010626205/maintainability)](https://codeclimate.com/github/louiCoder/tyro-sample/maintainability)
 
 # Tyro-sample-app
