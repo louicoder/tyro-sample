@@ -66,7 +66,7 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --verbose",
-    "test:coverage": "jest --verbose --coverage"
+    "test:coverage": "jest --verbose --coverage "
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -80,7 +80,8 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/serviceWorker.js"
     ],
     "resolver": "jest-pnp-resolver",
     "setupFiles": [
