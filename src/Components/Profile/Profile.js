@@ -25,9 +25,9 @@ const profile = (props) => {
 		: <div><h2>Click on any profile to view.</h2></div>;
 
 	return (
-		<div>
+		<>
 			{profile}
-		</div>
+		</>
 	);
 };
 

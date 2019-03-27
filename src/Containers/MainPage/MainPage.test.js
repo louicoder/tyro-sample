@@ -29,6 +29,6 @@ describe('<MainPage />', () => {
     })
 
     it('render container div', () => {
-        expect(wrapper.find('div').length).toEqual(7);
+        expect(wrapper.find('div').length).toEqual(6);
     })
 })

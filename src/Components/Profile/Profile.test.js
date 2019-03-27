@@ -20,7 +20,7 @@ describe('<Profile />', () => {
         }
         wrapper = mount(<Provider store={store}><Profile {...props}/></Provider>)
        
-        expect(wrapper.find('div').length).toEqual(2);
+        expect(wrapper.find('div').length).toEqual(1);
         expect(wrapper.contains('Click on any profile to view.')).toBe(true);
     })
 
