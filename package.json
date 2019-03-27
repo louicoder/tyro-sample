@@ -65,7 +65,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --verbose",
+    "test": "node scripts/test.js --verbose=true",
     "test:coverage": "jest --verbose --coverage "
   },
   "eslintConfig": {
@@ -81,7 +81,8 @@
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,ts,tsx}",
       "!src/**/*.d.ts",
-      "!src/serviceWorker.js"
+      "!src/serviceWorker.js",
+      "!src/index.js"
     ],
     "resolver": "jest-pnp-resolver",
     "setupFiles": [

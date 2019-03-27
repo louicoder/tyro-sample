@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-// import * as serviceWorker from './serviceWorker';
-// require('react-web-vector-icons/fonts');
 import {Provider} from 'react-redux';
 import store from './store/configureStore';
 import axios from 'axios';
