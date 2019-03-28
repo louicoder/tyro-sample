@@ -20,15 +20,15 @@ beforeEach(() => {
 })
 
 describe('<MainPage />', () => {
-    it('render profile component', () => {
+    it('renders profile component', () => {
         expect(wrapper.find(Profile).children().length).toEqual(1);
     })
 
-    it('render faces component', () => {
+    it('renders faces component', () => {
         expect(wrapper.find(FacesList).children().length).toEqual(1);
     })
 
-    it('render container div', () => {
+    it('renders container div', () => {
         expect(wrapper.find('div').length).toEqual(6);
     })
 })

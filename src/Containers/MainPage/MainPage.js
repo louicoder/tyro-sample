@@ -47,7 +47,7 @@ class MainPage extends Component {
 	};
 
 	/**
-	 * function setes new state and navigates to new URL
+	 * function sets new state and navigates to new URL
 	 * @param {id} String
 	 * @returns {void}
 	 */
