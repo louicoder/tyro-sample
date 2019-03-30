@@ -15,11 +15,27 @@ const store = MainStore();
 configure({adapter: new Adapter()})
 
 let wrapper;
-beforeEach(() => {
-    wrapper = mount(<Provider store={store}><MemoryRouter><MainPage faces={faces}/></MemoryRouter></Provider>)
-})
+
 
 describe('<MainPage />', () => {
+
+    beforeEach(() => {
+        const props = {
+            faces: faces,
+            match: {
+                params: {
+                    id: '53213223-850c-4be6-ae10-d1dba0c74bb7'
+                }
+            }
+        }
+    
+        let state = {
+            searchTerm: ''
+        }
+        wrapper = mount(<Provider store={store}><MemoryRouter><MainPage {...props} {...state}/></MemoryRouter></Provider>)
+    })
+
+
     it('renders profile component', () => {
         expect(wrapper.find(Profile).children().length).toEqual(1);
     })
@@ -30,5 +46,15 @@ describe('<MainPage />', () => {
 
     it('renders container div', () => {
         expect(wrapper.find('div').length).toEqual(6);
+    })
+
+    it('sets new state when nameChangedHandler is called', () => {
+        const input = wrapper.find("input");
+        const value = input.simulate('change', {target:{value: 'louis'}}).instance().value
+        wrapper.setState({
+            searchTerm: value
+        })
+        
+        expect(wrapper.state().searchTerm).toEqual('louis')
     })
 })
