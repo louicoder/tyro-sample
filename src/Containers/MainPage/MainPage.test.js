@@ -7,7 +7,8 @@ import faces from '../../Components/Profile/Fixtures';
 import FacesList from '../../Components/FacesList/FacesList';
 import {Provider} from 'react-redux'
 import MainStore from '../../store/configureStore';
-import {MemoryRouter} from 'react-router'
+import {MemoryRouter} from 'react-router';
+import classes from './MainPage.css';
 
 const store = MainStore();
 
@@ -19,6 +20,7 @@ let wrapper;
 
 describe('<MainPage />', () => {
 
+
     beforeEach(() => {
         const props = {
             faces: faces,
@@ -29,15 +31,17 @@ describe('<MainPage />', () => {
             }
         }
     
-        let state = {
+        const state = {
             searchTerm: ''
         }
+        
         wrapper = mount(<Provider store={store}><MemoryRouter><MainPage {...props} {...state}/></MemoryRouter></Provider>)
     })
 
 
     it('renders profile component', () => {
         expect(wrapper.find(Profile).children().length).toEqual(1);
+
     })
 
     it('renders faces component', () => {
@@ -49,10 +53,10 @@ describe('<MainPage />', () => {
     })
 
     it('sets new state when nameChangedHandler is called', () => {
-        const input = wrapper.find("input");
-        const value = input.simulate('change', {target:{value: 'louis'}}).instance().value
+       const el = wrapper.find("input").first().simulate('change',{target: { value: 'louis'}}).instance().value
+
         wrapper.setState({
-            searchTerm: value
+            searchTerm: el
         })
         
         expect(wrapper.state().searchTerm).toEqual('louis')

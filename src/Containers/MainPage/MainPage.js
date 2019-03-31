@@ -40,6 +40,7 @@ class MainPage extends Component {
 				face.name.last.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
 			);
 		});
+
 		this.setState({
 			searchTerm: event.target.value,
 			facesCopy: faces
